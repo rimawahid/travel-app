@@ -12,6 +12,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  var images ={
+    "balloning.png" :"Balloning",
+    "hiking.png" :"Hiking",
+    "kayaking.png" :"Kayaking",
+    "snorkling.png" :"Snorkling",
+  };
   @override
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 3, vsync: this);
@@ -67,7 +73,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   indicator:
                       CircleTabIndicator(color: AppColors.mainColor, radius: 4),
                   tabs: [
-                    Tab(text: "Places"),
+                    Tab(text: "Places" ),
                     Tab(text: "Inspiration"),
                     Tab(text: "Emotions"),
                   ]),
@@ -126,33 +132,35 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             width: double.maxFinite,
             margin: const EdgeInsets.only(left: 20),
             child: ListView.builder(
-              itemCount: 4,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (_, index) {
-              return Container(
-                margin: const EdgeInsets.only(right: 40),
-                child: Column(
-                  children: [
-                    Container(
-                     // margin: const EdgeInsets.only(right: 50),
-                      width: 80,
-                      height: 80,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                          image: DecorationImage(
-                              image: AssetImage("img/mountains.jpg"),
-                              fit: BoxFit.cover)),
+                itemCount: 4,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (_, index) {
+                  return Container(
+                    margin: const EdgeInsets.only(right: 40),
+                    child: Column(
+                      children: [
+                        Container(
+                          // margin: const EdgeInsets.only(right: 50),
+                          width: 80,
+                          height: 80,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white,
+                              image: DecorationImage(
+                                  image: AssetImage("img/"+images.keys.elementAt(index)),
+                                  fit: BoxFit.cover)),
+                        ),
+                        SizedBox(height:20 ,),
+                        Container(
+                          child: AppText(
+                            text: images.values.elementAt(index),
+                            color: AppColors.TextColor2,
+                          ),
+                        ),
+                      ],
                     ),
-                    Container(
-                      child: AppText(
-                        text: "Kayaking",
-                        color: AppColors.TextColor2,),
-                    ),
-                  ],
-                ),
-              );
-            }),
+                  );
+                }),
           ),
         ],
       ),
