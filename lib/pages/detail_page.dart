@@ -5,6 +5,7 @@ import 'package:travel_app/misc/colors.dart';
 import 'package:travel_app/widgets/app_button.dart';
 import 'package:travel_app/widgets/app_large_text.dart';
 import 'package:travel_app/widgets/app_text.dart';
+import 'package:travel_app/widgets/responsive_button.dart';
 
 class DetailPage extends StatefulWidget {
   const DetailPage({Key? key}) : super(key: key);
@@ -38,7 +39,7 @@ class _DetailPageState extends State<DetailPage> {
                     )),
                 Positioned(
                     left: 20,
-                    top: 70,
+                    top: 30,
                     child: Row(
                       children: [
                         IconButton(
@@ -124,7 +125,7 @@ class _DetailPageState extends State<DetailPage> {
                         AppLargeText(
                           text: "People",
                           color: Colors.black.withOpacity(0.8),
-                          size: 25,
+                          size: 28,
                         ),
                         SizedBox(
                           height: 7,
@@ -160,10 +161,37 @@ class _DetailPageState extends State<DetailPage> {
                             );
                           }),
                         ),
+                        SizedBox(
+                          height: 25,
+                        ),
+                        AppLargeText(text: "Description", color: Colors.black.withOpacity(0.8),),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        AppText(text: "You must go for a travel. Traveling helps get rid of pressure. Go to the mountain to see the nature.",size: 18, color: AppColors.mainTextColor,)
                       ],
                     ),
                   ),
-                )
+                ),
+                Positioned(
+                  bottom: 25,
+                  left: 20,
+                  right: 20,
+                  child: Row(
+                    children: [
+                      AppButtons(
+                        color: AppColors.TextColor1, 
+                        backgroundColor: Colors.white, 
+                        size: 60, 
+                        borderColor: AppColors.TextColor1,
+                        isIcon: true,
+                        icon: Icons.favorite_border,),
+                      SizedBox(width: 20,),
+                      ResponsiveButton(
+                        isResponsive: true,
+                      )
+                    ],
+                )),
               ],
             )),
       ),
